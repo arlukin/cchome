@@ -1,0 +1,3 @@
+#!/bin/sh
+hdparm -Y /dev/sdb
+
