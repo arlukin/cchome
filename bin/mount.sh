@@ -4,7 +4,7 @@
 # Used on the office iMac to ssh mount directories on the office servers.
 #
 
-MOUNT=~/cc/mount
+MOUNT=~/cchome/mount
 
 function init_password_less_ssh {
   echo "Mount server " $1

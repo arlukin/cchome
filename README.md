@@ -7,5 +7,5 @@ can be config files, scripts etc.
 To use this repo.
 
 	cd
-	git clone git://github.com/arlukin/home.git
+	git clone git://github.com/arlukin/cchome.git
 
