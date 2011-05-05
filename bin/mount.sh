@@ -17,13 +17,14 @@ function ssh_mount_server {
 
   mkdir -p $MOUNT/$1
   umount $MOUNT/$1
-  sshfs root@$2:/opt/ $MOUNT/$1 -oauto_cache,reconnect
+  diskutil umount force $MOUNT/$1
+  sshfs root@$2:$3 $MOUNT/$1 -oauto_cache,reconnect
 }
 
-#                 Folder            Server ip
+#                 Local Folder     Server ip          Remote folder
 
-ssh_mount_server 'fo-tp-dalitst'   '10.100.100.231'
-ssh_mount_server 'fo-tp-php-old'   '10.100.0.100'
-ssh_mount_server 'fo-tp-file'      '10.100.0.4'
-ssh_mount_server 'fo-tp-vh01'      '10.100.100.201'
-ssh_mount_server 'fo-tp-install'   '10.100.100.200'
+ssh_mount_server 'fo-tp-dalitst'   '10.100.100.231'   '/opt/'
+ssh_mount_server 'fo-tp-php-old'   '10.100.0.100'     '/opt/RootLive/'
+ssh_mount_server 'fo-tp-file'      '10.100.0.4'       '/file/'
+ssh_mount_server 'fo-tp-vh01'      '10.100.100.201'   '/opt/'
+ssh_mount_server 'fo-tp-install'   '10.100.100.200'   '/opt/'
