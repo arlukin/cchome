@@ -13,12 +13,14 @@ function init_password_less_ssh {
 }
 
 function ssh_mount_server {
+  echo "root@$2:$3 $MOUNT/$1" 
   init_password_less_ssh $2
 
   mkdir -p $MOUNT/$1
   umount $MOUNT/$1
-  diskutil umount force $MOUNT/$1
-  sshfs root@$2:$3 $MOUNT/$1 -oauto_cache,reconnect
+  #diskutil umount force $MOUNT/$1
+  sshfs root@$2:$3 $MOUNT/$1 
+  #-oauto_cache,reconnect
 }
 
 #                 Local Folder     Server ip          Remote folder
