@@ -22,9 +22,11 @@ function ssh_mount_server {
   sshfs $2:$3 $MOUNT/$1 
   #-oauto_cache,reconnect
 }
+# rpm -q fuse-sshfs 
+
+yum -y install sshfs
 
 #                 Local Folder     Server ip          Remote folder
-
 ssh_mount_server 'fo-tp-dalitst'   'root@10.100.100.231'      '/opt/'
 ssh_mount_server 'fo-tp-php-old'   'root@10.100.0.100'        '/opt/RootLive/'
 ssh_mount_server 'fo-tp-file'      'root@10.100.0.4'          '/file/'
