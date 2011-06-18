@@ -30,3 +30,6 @@ ssh_mount_server 'fo-tp-php-old'   'root@10.100.0.100'        '/opt/RootLive/'
 ssh_mount_server 'fo-tp-file'      'root@10.100.0.4'          '/file/'
 ssh_mount_server 'fo-tp-vh01'      'root@10.100.100.201'      '/opt/'
 ssh_mount_server 'fo-tp-install'   'root@10.100.100.200'      '/opt/'
+
+#sshfs -p34 arlukin@192.168.0.100:/ av-as-server/
+
