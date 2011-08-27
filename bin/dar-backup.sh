@@ -26,21 +26,20 @@
 #       09.12.2009 - Extended by Daniel Lindh
 
 # Base directory where backups are stored
-BASE_BAK_DIR=/media/UNTITLE/0Backup/dar
+BASE_BAK_DIR="/media/home/0Backup/dar"
 
 # Directories to backup
-INCLUDE_DIR="-g ./media/UNTITLE/MyPrivate
-            -g ./home/arlukin/MyPrivate"
+INCLUDE_DIR=" -g media/home/MyPrivate "
 
 # Directories not to backup
-EXCLUDE_DIR="-P NoBackup
-            -P 0NoBackup"
+EXCLUDE_DIR=" -P NoBackup
+            -P 0NoBackup "
 
 # Max backup file size
 SLICE_SIZE=500M
 
 # Password for encryption.
-PASSWORD="xx"
+PASSWORD="xxx"
 
 # Send error emails to.
 MAIL_TO="daniel@cybercow.se"
@@ -51,7 +50,7 @@ MONTHLY_BAK_DIR=`date -I | awk -F "-" '{ print $1"-"$2 }'`
 
 # Remote backup settings
 # You need to setup automatic login for the backup user
-# http://articles.cybercow.se/2009120966/articles/linux/ssh-without-password.html
+# http://arlukin.cybercow.se/posts/linux/linux-mini-guide/
 REMOTE_BAK="true"
 REMOTE_HOST="xx.xx.xx.xx"
 REMOTE_PORT="xx"
