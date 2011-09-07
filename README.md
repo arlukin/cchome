@@ -8,4 +8,3 @@ To use this repo.
 
 	cd
 	git clone git://github.com/arlukin/cchome.git
-
