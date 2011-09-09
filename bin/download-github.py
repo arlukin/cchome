@@ -16,7 +16,7 @@ import json
 import subprocess
 import os
 
-git_cmd = "/usr/local/git/bin/git"
+git_cmd = subprocess.Popen(['which', 'git'], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0].strip()
 
 def _github_get(cmd):
     '''
@@ -61,7 +61,7 @@ def _git_pull(clone_url, repo_path):
     '''
     Executes git shell command to pull a repo.
     '''
-    cmd =  git_cmd + " pull " + clone_url
+    cmd =  git_cmd + " pull " + clone_url + " master"
     print cmd
     print
     subprocess.Popen(cmd, shell=True, cwd=repo_path).communicate()[0]
@@ -84,12 +84,13 @@ def download_my_github_repos(user):
     '''
     git clone/pull all repos from a user and his organizatins.
     '''
-    repos_path = os.path.abspath('../github/')
+    repos_path = os.path.dirname(__file__) + '/../github/'
+    repos_path = os.path.realpath(repos_path)
     subprocess.Popen("mkdir " + repos_path, shell=True).communicate()[0]
     _download_github_repos(user, repos_path)
     for org in _get_all_orgs(user):
         print "Download from organization: " + org
-        _download_github_repos(org)
+        _download_github_repos(org, repos_path)
 
 if (__name__ == '__main__'):
     download_my_github_repos("arlukin")
