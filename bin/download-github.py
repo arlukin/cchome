@@ -40,7 +40,7 @@ def _get_all_orgs(user):
 def _get_all_repos(user):
     '''
     Return a list with all repos a user owns.
-    
+
     Each list item contains a list with name and git clone_url.
     '''
     clone_urls = []
@@ -60,19 +60,18 @@ def _git_clone(clone_url, repo_path):
 def _git_pull(clone_url, repo_path):
     '''
     Executes git shell command to pull a repo.
-    '''    
+    '''
     cmd =  git_cmd + " pull " + clone_url
     print cmd
     print
     subprocess.Popen(cmd, shell=True, cwd=repo_path).communicate()[0]
     print
 
-def _download_github_repos(user):
+def _download_github_repos(user, repos_path):
     '''
     git clone/pull all repos from a user or organizatin.
-    '''    
+    '''
     for name, clone_url in  _get_all_repos(user):
-        repos_path = os.path.abspath('../github/')
         repo_path = os.path.abspath(repos_path + "/" + name)
         print "---------------------"
         print "Download/Update " + repo_path
@@ -84,8 +83,10 @@ def _download_github_repos(user):
 def download_my_github_repos(user):
     '''
     git clone/pull all repos from a user and his organizatins.
-    '''    
-    _download_github_repos(user)
+    '''
+    repos_path = os.path.abspath('../github/')
+    subprocess.Popen("mkdir " + repos_path, shell=True).communicate()[0]
+    _download_github_repos(user, repos_path)
     for org in _get_all_orgs(user):
         print "Download from organization: " + org
         _download_github_repos(org)
