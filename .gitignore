@@ -1,3 +1,5 @@
 /mount
 /dev
 *~
+*.pyc
+/github
