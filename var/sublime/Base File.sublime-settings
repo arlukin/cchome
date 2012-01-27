@@ -1,4 +1,13 @@
 {
 	"color_scheme": "Packages/User/A day of oand.tmTheme",
-	"trim_trailing_white_space_on_save": true
+	"draw_indent_guides": false,
+	"ensure_newline_at_eof_on_save": true,
+	"rulers":
+	[
+		79
+	],
+	"save_on_focus_lost": true,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false
 }
