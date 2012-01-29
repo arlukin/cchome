@@ -1,0 +1,10 @@
+{
+	"auto_upgrade_last_run": 1327874839,
+	"installed_packages":
+	[
+		"Goto Documentation",
+		"Package Control",
+		"SublimeCodeIntel",
+		"sublimelint"
+	]
+}
