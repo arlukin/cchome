@@ -1,0 +1,3 @@
+{
+    "cmd": ["/Users/dali/cchome/github/oand/bin/test-all", "-p", "$file_name", "-n"]
+}
