@@ -1,0 +1,3 @@
+{
+    "cmd": ["/Users/daniel/Desktop/github/syco/bin/test-all.py", "-p", "$file_name"]
+}

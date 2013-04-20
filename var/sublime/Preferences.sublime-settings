@@ -1,0 +1,48 @@
+{
+	"color_scheme": "Packages/User/A day of oand.tmTheme",
+	"draw_indent_guides": false,
+	"ensure_newline_at_eof_on_save": true,
+	"file_exclude_patterns":
+	[
+		"*.pyc",
+		"*.pyo",
+		"*.exe",
+		"*.dll",
+		"*.obj",
+		"*.o",
+		"*.a",
+		"*.lib",
+		"*.so",
+		"*.dylib",
+		"*.ncb",
+		"*.sdf",
+		"*.suo",
+		"*.pdb",
+		"*.idb",
+		".DS_Store",
+		"*.psd",
+		"*.db"
+	],
+	"font_size": 14.0,
+	"ignored_packages":
+	[
+		"Vintage",
+		"Goto Documentation",
+		"SublimeCodeIntel",
+		"sublimelint"
+	],
+	"open_files_in_new_window": false,
+	"rulers":
+	[
+		79
+	],
+	"save_on_focus_lost": true,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false,
+
+    // The number of spaces a tab is considered equal to
+    "tab_size": 4,
+
+    "detect_indentation": false
+}

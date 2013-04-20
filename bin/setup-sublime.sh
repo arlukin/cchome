@@ -34,8 +34,17 @@ cmd+shift+p  → “install” → ENTER → goto doc → ENTER
     ctrl-shift-h will find python help for marked word.
 
 EOF
-#
 
+
+#
+echo "Setup with own User configs."
+
+cd "/Users/daniel/Library/Application Support/Sublime Text 2/Packages/"
+mv User User.org
+
+ln -s /Users/daniel/cchome/var/sublime User
+
+#
 echo
 echo "If anything was installed, please restart sublime."
 echo

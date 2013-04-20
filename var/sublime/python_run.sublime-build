@@ -1,0 +1,3 @@
+{
+    "cmd": ["/usr/bin/python", "$file_name"]
+}
