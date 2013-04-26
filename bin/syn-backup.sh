@@ -15,6 +15,19 @@
 # To later decrypt the file.
 # gpg2 --decrypt-files --decrypt cryptme.txt.gpg  
 
+# Install with
+# cp /volume1/homes/arlukin/CloudStation/cchome/bin/syn-backup.sh /opt/bin/
+# chmod +x /opt/bin/syn-backup.sh
+
+# Configure /etc/crontab
+# 0       06      *       *       *       root    /opt/bin/rsnapshot daily 
+# 0       07      *       *       6       root    /opt/bin/rsnapshot weekly
+# 0       08      1       *       *       root    /opt/bin/rsnapshot monthly
+# 0       09      *       *       6       root    /opt/bin/syn-backup.sh
+#
+# /usr/syno/etc/rc.d/S04crond.sh stop
+# /usr/syno/etc/rc.d/S04crond.sh start
+
 
 YM=`date +"%Y-%m"`
 TAR_FILE="/volume1/backup/rsnapshot_bak/$YM.tar"
