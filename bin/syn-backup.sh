@@ -2,22 +2,26 @@
 
 # Manually generate gpg keys
 # 	https://help.ubuntu.com/community/GnuPrivacyGuardHowto
-# gpg2 --gen-key 
-# gpg2 --cert-digest-algo=SHA256 --edit-key $GPGKEY
+#
+# 	gpg2 --gen-key 
+# 	gpg2 --cert-digest-algo=SHA256 --edit-key $GPGKEY
 # 
 # Add to /root/.profile
 # 	export GPGKEY=D8FC66D2
-#
-# killall -q gpg-agent
-# eval $(gpg-agent --daemon)
-# source ~/.profile
+# 	killall -q gpg-agent
+# 	eval $(gpg-agent --daemon)
+# 	source ~/.profile
 #
 # To later decrypt the file.
-# gpg2 --decrypt-files --decrypt cryptme.txt.gpg  
+# 	gpg2 --decrypt-files --decrypt cryptme.txt.gpg  
 
 # Install with
-# cp /volume1/homes/arlukin/CloudStation/cchome/bin/syn-backup.sh /opt/bin/
-# chmod +x /opt/bin/syn-backup.sh
+# 	cp /volume1/homes/arlukin/CloudStation/cchome/bin/syn-backup.sh /opt/bin/
+# 	chmod +x /opt/bin/syn-backup.sh
+
+# Install rsnapshot
+# 	http://forum.synology.com/wiki/index.php/Overview_on_modifying_the_Synology_Server,_bootstrap,_ipkg_etc
+# 	http://www.kevitivity.com/2012/11/integrating-rsnapshot-backups-with-synology-nas-systems/comment-page-1/#comment-5124
 
 # Configure /etc/crontab
 # 0       06      *       *       *       root    /opt/bin/rsnapshot daily 
