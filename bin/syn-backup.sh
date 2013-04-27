@@ -48,7 +48,8 @@ exec 1>>$LOG_FILE 2>>$LOG_FILE
 # If the script is executed several times the same month, only one file will be stored.
 echo "Create backup $TAR_FILE"
 [ -e $TAR_FILE ] && rm $TAR_FILE && echo "Removed $TAR_FILE"
-tar cf $TAR_FILE /volume1/backup/rsnapshot_bak/daily.0
+cd /volume1/backup/rsnapshot_bak/
+tar cf $TAR_FILE daily.0
 
 
 # 
