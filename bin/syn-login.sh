@@ -37,7 +37,7 @@ exec 1>/dev/null 2>/dev/null
 #set the subject of the TO_EMAIL
 SUBJECT="file-au - A user has logged in to the CLI"
 TO_EMAIL="daniel@cybercow.se"
-MESSAGE="User" `whoami` "logged in at" `date +"%Y-%m-%d %T"` "."
+MESSAGE="User `whoami` logged in at `date +"%Y-%m-%d %T"`."
 
 
 # send the TO_EMAIL

@@ -44,7 +44,7 @@ REMOTE_FILE="/volume1/backup/rsnapshot_bak/remote.gpg"
 exec 1>>$LOG_FILE 2>>$LOG_FILE
 
 #
-echo "syn-backup started at" `date +"%T"`
+echo "syn-backup started at `date +"%T"`."
 cat $LOG_FILE | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
 
 
@@ -78,7 +78,7 @@ rm batch
 
 
 #
-echo "syn-backup ended at" `date +"%T"`
+echo "syn-backup ended at `date +"%T"`."
 
 # send the TO_EMAIL
 cat $LOG_FILE | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
