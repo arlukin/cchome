@@ -43,6 +43,10 @@ REMOTE_FILE="/volume1/backup/rsnapshot_bak/remote.gpg"
 # Redirect all output to file
 exec 1>>$LOG_FILE 2>>$LOG_FILE
 
+#
+echo "syn-backup started at" `date +"%T"`
+cat $LOG_FILE | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
+
 
 # Create one compressed archive for every month, forever. 
 # If the script is executed several times the same month, only one file will be stored.
@@ -74,7 +78,7 @@ rm batch
 
 
 #
-echo "Email log"
+echo "syn-backup ended at" `date +"%T"`
 
 # send the TO_EMAIL
 cat $LOG_FILE | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL

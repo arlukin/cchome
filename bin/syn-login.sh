@@ -26,6 +26,7 @@
 # Install with
 # 	cp /volume1/homes/arlukin/CloudStation/cchome/bin/syn-login.sh /opt/bin/
 # 	chmod +x /opt/bin/syn-login.sh
+# 	echo "(sh /opt/bin/syn-login.sh) &" >> /etc/profile
 
 
 # To turn echo off so the logged in user doesn't know the script is running
@@ -36,10 +37,11 @@ exec 1>/dev/null 2>/dev/null
 #set the subject of the TO_EMAIL
 SUBJECT="file-au - A user has logged in to the CLI"
 TO_EMAIL="daniel@cybercow.se"
+MESSAGE="User" `whoami` "logged in at" `date +"%Y-%m-%d %T"` "."
 
 
 # send the TO_EMAIL
-echo "$SUBJECT" | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
+echo "$MESSAGE" | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
 
 
 # if the TO_EMAIL fails nail will create a file dead.letter, test to see if it exists and if so 
@@ -50,7 +52,7 @@ while [ -e /root/dead.letter ]
 do
   	sleep 60
   	rm "/root/dead.letter"
-  	echo "$SUBJECT" | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
+  	echo "$MESSAGE" | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
 done
 
 exit
