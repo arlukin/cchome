@@ -38,7 +38,7 @@ TO_EMAIL="daniel@cybercow.se"
 LOG_FILE="/root/syn-backup.log"
 TAR_FILE="/volume1/backup/rsnapshot_bak/$YM.tar"
 GPG_FILE="/volume1/backup/rsnapshot_bak/$YM.tar.gpg"
-REMOTE_FILE="/volume1/backup/rsnapshot_bak/remote.gpg"
+REMOTE_FILE="/volume1/backup/rsnapshot_bak/$YM.tar.log"
 YM=`date +"%Y-%m"`
 
 # Redirect all output to file
@@ -88,10 +88,5 @@ do
   	rm "/root/dead.letter"
   	echo "$SUBJECT" | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
 done
-
-
-#
-echo "Remove $LOG_FILE"
-rm $LOG_FILE
 
 exit
