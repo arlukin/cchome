@@ -1,5 +1,12 @@
 #!/bin/sh
 
+__author__ = "daniel.lindh@cybercow.se"
+__copyright__ = "Copyright 2013, Daniel Lindh"
+__license__ = "http://creativecommons.org/licenses/by/3.0/deed.en_US"
+__version__ = "0.1"
+__status__ = "Production"
+
+
 # Manually generate gpg keys
 # 	https://help.ubuntu.com/community/GnuPrivacyGuardHowto
 #
