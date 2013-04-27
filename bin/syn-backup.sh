@@ -32,14 +32,13 @@
 # /usr/syno/etc/rc.d/S04crond.sh stop
 # /usr/syno/etc/rc.d/S04crond.sh start
 
-
-SUBJECT="file-au - syn-backup"
+YM=`date +"%Y-%m"`
+SUBJECT="file-au - syn-backup $YM"
 TO_EMAIL="daniel@cybercow.se"
-LOG_FILE="/root/syn-backup.log"
+LOG_FILE="/volume1/backup/rsnapshot_bak/$YM.log"
 TAR_FILE="/volume1/backup/rsnapshot_bak/$YM.tar"
 GPG_FILE="/volume1/backup/rsnapshot_bak/$YM.tar.gpg"
-REMOTE_FILE="/volume1/backup/rsnapshot_bak/$YM.tar.log"
-YM=`date +"%Y-%m"`
+REMOTE_FILE="/volume1/backup/rsnapshot_bak/remote.gpg"
 
 # Redirect all output to file
 exec 1>>$LOG_FILE 2>>$LOG_FILE
@@ -77,7 +76,7 @@ rm batch
 echo "Email log"
 
 # send the TO_EMAIL
-echo "$SUBJECT" | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
+cat $LOG_FILE | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
 
 
 # if the TO_EMAIL fails nail will create a file dead.letter, test to see if it exists and if so 
