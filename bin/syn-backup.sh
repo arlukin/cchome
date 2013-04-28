@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Archive (tar) all files in a folder, encrypt (gpg2) the and send (sftp) to a remote host.
+# Archive (tar) a folder, encrypt (gpg2) and send to a remote host.
 #
 # Manually generate gpg keys
 # 	https://help.ubuntu.com/community/GnuPrivacyGuardHowto
@@ -21,7 +21,8 @@
 #   cat 2013-04-17-28-daily_incr_backup.split* | /opt/bin/tar x
 #
 # Install with
-# 	cp /volume1/homes/arlukin/CloudStation/cchome/bin/syn-backup.sh /opt/bin/ && chmod +x /opt/bin/syn-backup.sh
+# 	cp /volume1/homes/arlukin/CloudStation/cchome/bin/syn-backup.sh /opt/bin/ 
+#	chmod +x /opt/bin/syn-backup.sh
 # 	
 # Install rsnapshot
 # 	http://forum.synology.com/wiki/index.php/Overview_on_modifying_the_Synology_Server,_bootstrap,_ipkg_etc
@@ -139,8 +140,8 @@ send_log_on_email () {
 	# send the TO_EMAIL
 	cat $LOG_FILE | /opt/bin/nail -s "$SUBJECT" $TO_EMAIL
 
-	# if the TO_EMAIL fails nail will create a file dead.letter, test to see if it exists and if so 
-	# wait 1minute and then resend
+	# if the TO_EMAIL fails nail will create a file dead.letter, test to see if
+	# it exists and if so  wait 1minute and then resend
 	while [ -e /root/dead.letter ]
 	do
 		sleep 60
@@ -187,10 +188,12 @@ create_backup () {
 
 	echo "Create incremental archive $SPLIT_FILE."
 	cd /
-	/opt/bin/tar c -g $SNAR_FILE $FOLDER_TO_BACKUP | split -d -b $SPLIT_SIZE - $SPLIT_FILE
+	/opt/bin/tar c -g $SNAR_FILE $FOLDER_TO_BACKUP | \
+		split -d -b $SPLIT_SIZE - $SPLIT_FILE
 
 	echo "Encrypt."
-	gpg2 --compress-level 0 --encrypt-files --batch -r daniel --encrypt $SPLIT_FILE*
+	gpg2 --compress-level 0 --recipient daniel --batch  \
+		 --encrypt-files --encrypt $SPLIT_FILE*
 
 	upload $SPLIT_FILE
 }
