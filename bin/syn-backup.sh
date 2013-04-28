@@ -1,12 +1,7 @@
 #!/bin/sh
-
-__author__ = "daniel.lindh@cybercow.se"
-__copyright__ = "Copyright 2013, Daniel Lindh"
-__license__ = "http://creativecommons.org/licenses/by/3.0/deed.en_US"
-__version__ = "0.1"
-__status__ = "Production"
-
-
+#
+# Archive (tar) all files in a folder, encrypt (gpg2) the and send (sftp) to a remote host.
+#
 # Manually generate gpg keys
 # 	https://help.ubuntu.com/community/GnuPrivacyGuardHowto
 #
@@ -24,16 +19,14 @@ __status__ = "Production"
 #   cat 2013-04-monthly_backup.split* | /opt/bin/tar xv
 #   cat 2013-04-17-week_incr_backup.split* | /opt/bin/tar x
 #   cat 2013-04-17-28-daily_incr_backup.split* | /opt/bin/tar x
-
-
+#
 # Install with
 # 	cp /volume1/homes/arlukin/CloudStation/cchome/bin/syn-backup.sh /opt/bin/ && chmod +x /opt/bin/syn-backup.sh
 # 	
-
 # Install rsnapshot
 # 	http://forum.synology.com/wiki/index.php/Overview_on_modifying_the_Synology_Server,_bootstrap,_ipkg_etc
 # 	http://www.kevitivity.com/2012/11/integrating-rsnapshot-backups-with-synology-nas-systems/comment-page-1/#comment-5124
-
+#
 # Configure /etc/crontab
 # 0       06      *       *       *       root    /opt/bin/rsnapshot daily 
 # 0       07      *       *       6       root    /opt/bin/rsnapshot weekly
@@ -42,6 +35,13 @@ __status__ = "Production"
 #
 # /usr/syno/etc/rc.d/S04crond.sh stop
 # /usr/syno/etc/rc.d/S04crond.sh start
+
+__author__ = "daniel.lindh@cybercow.se"
+__copyright__ = "Copyright 2013, Daniel Lindh"
+__license__ = "http://creativecommons.org/licenses/by/3.0/deed.en_US"
+__version__ = "0.1"
+__status__ = "Production"
+
 
 #
 # SETTINGS

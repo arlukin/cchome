@@ -6,6 +6,13 @@
 #   http://www.rockettheme.com/magazine/1319-using-sublime-text-2-for-development
 #
 
+__author__ = "daniel.lindh@cybercow.se"
+__copyright__ = "Copyright 2013, Daniel Lindh"
+__license__ = "http://creativecommons.org/licenses/by/3.0/deed.en_US"
+__version__ = "0.1"
+__status__ = "Production"
+
+
 if [ ! -e  /bin/subl ]; then
     echo "Setup symlink /bin/subl"
     sudo ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /bin/subl
