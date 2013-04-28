@@ -8,8 +8,9 @@
 # 	gpg2 --gen-key 
 # 	gpg2 --cert-digest-algo=SHA256 --edit-key $GPGKEY
 # 
-# Add to /root/.profile
+# 	# Add to /root/.profile
 # 	export GPGKEY=D8FC66D2
+#
 # 	killall -q gpg-agent
 # 	eval $(gpg-agent --daemon)
 # 	source ~/.profile
