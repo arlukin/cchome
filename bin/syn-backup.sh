@@ -165,6 +165,7 @@ store_to_logfile () {
 
 upload () {
     print_log "  Upload to remote server"
+    print_log "--------------- WARNING ---------- "
     print_log "    Create upload batch file"
 
     cat > $BATCH_FILE << EOF
@@ -238,18 +239,21 @@ create_backup () {
 
     print_log "  Create incremental archive - $SPLIT_FILE"
     cd /
-    /opt/bin/tar c --no-check-device -g $SNAR_FILE $FOLDER_TO_BACKUP | \
+    /opt/bin/tar c --no-check-device \
+        -g $SNAR_FILE $BACKUP_FOLDER --atime-preserve=system | \
         split -d -b $SPLIT_SIZE - $SPLIT_FILE
 
     print_log "  Encrypt - $SPLIT_FILE*"
-    gpg2 --compress-level 6 --recipient daniel --batch  \
+    # Compress-level 0, because most files that are backuped are already encrypted.
+    gpg2 --compress-level 0 --recipient daniel --batch  \
          --encrypt-files --encrypt $SPLIT_FILE*
 
     print_log "  All files in $BACKUP_FOLDER"
     ls -hal $BACKUP_FOLDER
     echo ""
 
-    upload $SPLIT_FILE
+    # Only upload month backups
+    #upload $SPLIT_FILE
 
     print_log "    Remove split file"
     ls $SPLIT_FILE* | grep -v "\\.gpg" | grep "split"
@@ -273,10 +277,12 @@ backup ()
     if [ ! -f "$FULL_SNAR_FILE" ]; then
         print_log "Do full backup"
         create_backup $FULL_BACKUP_FOLDER $FULL_SPLIT_FILE $FULL_SNAR_FILE
+        upload $MONTH_SPLIT_FILE
 
     elif [ ! -f "$MONTH_SNAR_FILE" ]; then
         print_log "Do month backup"
         create_backup $MONTH_BACKUP_FOLDER $MONTH_SPLIT_FILE $MONTH_SNAR_FILE $FULL_SNAR_FILE
+        upload $MONTH_SPLIT_FILE
 
     elif [ ! -f "$WEEK_SNAR_FILE" ]; then
         print_log "Do week backup"
