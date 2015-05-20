@@ -18,13 +18,7 @@
 # redirect stdout(1) and stderr(2) to null:
 exec 1>/dev/null 2>/dev/null
 
-
-#set the subject of the TO_EMAIL
-SUBJECT="file-au - `whoami` has logged in to the CLI"
 MESSAGE="User `whoami` logged in at `date +"%Y-%m-%d %T"`."
-
-
-# send the TO_EMAIL
-synosyslogmail --mailtype=KEYWORD --keyword="$SUBJECT" --content="$MESSAGE" > 
+synosyslogmail --mailtype=KEYWORD --keyword="SSH-LOGIN" --content="$MESSAGE" 
               
 exit
