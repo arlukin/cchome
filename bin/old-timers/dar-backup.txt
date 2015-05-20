@@ -1,0 +1,41 @@
+dar-backup
+----------
+https://github.com/arlukin/cchome/blob/master/bin/old-timers/dar-backup.sh
+
+http://dar.linux.free.fr/doc/from_sources.html
+
+
+http://nwrickert2.wordpress.com/2012/08/26/using-dar-for-backups/
+The main disadvantage of “tar”, is that a disk sector failure could corrupt the entire backup.  This is particularly the case when using compression.  With “dar”, the compression is done individually for each file, so that a damaged sector in the backup file should only damage one or two of the backed up files, and not overflow into damaging the entire archive.
+
+
+2. When doing "listed incremental" backups with tar, tar records and
+counts a change in inode number as a change of the file. So after
+restoring a filesystem from tar backups, you cannot do an incremental
+backup of them against the backups I had recently restored from,
+because all the inode numbers were different, and tar insisted on
+making a new full backup!
+
+
+
+rdiff-backup and ecryptfs
+-------------------------
+
+ipkg install py26-rdiff-backup
+/opt/bin/rdiff-backup-2.6 /volume1/backup/syn-backup/backup-this/1 /volume1/backup/ecryptfs-backup
+
+
+  % sudo mount -t ecryptfs /drive/encrypt /drive/decrypt
+  % rdiff-backup /home/john /drive/decrypt
+  % sudo umount -i /drive/decrypt
+  % rsync -av --delete -e ssh /drive/encrypt user@xxxxxxxxxxxxxx:/backup
+
+
+cd /volume1/backup/
+mkdir ecryptfs-backup-store
+mkdir ecryptfs-backup
+chmod 700 ecryptfs-backup*
+mount.ecryptfs  "ecryptfs-backup-store" "ecryptfs-backup" -o key=passphrase,ecryptfs_cipher=aes,ecryptfs_key_bytes=32,ecryptfs_passthrough=no,ecryptfs_enable_filename_crypto=yes
+
+http://manpages.ubuntu.com/manpages/raring/en/man7/ecryptfs.7.html
+http://rdiff-backup.nongnu.org/FAQ.html
