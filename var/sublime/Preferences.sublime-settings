@@ -1,6 +1,10 @@
 {
+	"font_size": 11.0,
 	"ignored_packages":
 	[
+		"Python PEP8 Autoformat",
+		"SublimeCodeIntel",
+		"sublimelint",
 		"Vintage"
 	]
 }

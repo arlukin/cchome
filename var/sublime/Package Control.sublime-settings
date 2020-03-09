@@ -5,6 +5,7 @@
 	[
 	],
 	"auto_upgrade_last_run": null,
+	"bootstrapped": true,
 	"cache_length": 300,
 	"certs":
 	{
